@@ -1,5 +1,3 @@
-GREEN='\330[0;32m'
-RESET='\330[0m'
 COLOR=%{$terminfo[bold]$fg[green]%}
 
 git_prompt() {
@@ -14,6 +12,13 @@ git_prompt() {
         COLOR=%{$terminfo[bold]$fg[yellow]%}
         ref+='?';
     fi;
+    if [[ -n $(git ls-files --others --exclude-standard) ]]; then
+        COLOR=%{$terminfo[bold]$fg[yellow]%}
+        ref+='!'
+    fi
+    if [[ -n $(git ls-files --deleted) ]]; then
+        COLOR=%{$terminfo[bold]$fg[red]%}
+    fi
  fi;
  ref="$COLOR $ref"
  echo $ref
