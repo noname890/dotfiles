@@ -1,4 +1,5 @@
 COLOR=%{$terminfo[bold]$fg[green]%}
+DIRLIST=2
 
 git_prompt() {
  if [ -d .git ]; then
@@ -34,7 +35,7 @@ else
     local user_symbol='$'
 fi
 
-local current_dir='%{$terminfo[bold]$fg[blue]%} %2~ %{$reset_color%}'
+local current_dir='%{$terminfo[bold]$fg[blue]%} %${DIRLIST}~ %{$reset_color%}'
 local git_branch='$(git_prompt)%{$reset_color%}'
 local rvm_ruby='$(ruby_prompt_info)'
 local venv_prompt='$(virtualenv_prompt_info)'
