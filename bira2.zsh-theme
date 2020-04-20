@@ -1,5 +1,8 @@
 COLOR=%{$terminfo[bold]$fg[green]%}
-DIRLIST=2
+
+if [ -z $DIRLIST ]; then
+    DIRLIST=2
+fi
 
 git_prompt() {
  if [ -d .git ]; then
